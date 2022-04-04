@@ -12,6 +12,7 @@ let addText = (text) =>{
 let addInput = () => {
   let input = document.createElement('input');
   input.className = "input";
+  input.innerText = ""
   document.body.append(input);
 }
 
@@ -19,8 +20,14 @@ let addButton = (text) => {
   let button = document.createElement('button');
   button.className = "button";
   button.innerText = text;
+  
+  button.onclick = () => {
+    console.log("username: " + document.querySelectorAll("input")[0].value + 
+                " passward: " + document.querySelectorAll("input")[1].value);
+  }
   document.body.append(button);
 }
+
   
 let addHeader = (text) => {
   let header = document.createElement('header');
@@ -36,6 +43,7 @@ let addHeader2 = (text) => {
   document.body.append(header2);
 }
 
+
 addHeader("Welcome to the website!");
 addPara();
 addHeader2("Would you like to log in?");
@@ -47,8 +55,3 @@ addText("Password ");
 addInput();
 addPara();
 addButton("Log in")
-  
-  
-  
-  
-  
