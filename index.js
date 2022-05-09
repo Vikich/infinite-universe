@@ -2,32 +2,31 @@ let addPara = () => {
   document.body.append(document.createElement('p'));
 }
 
-let addText = (text) =>{
+let addText = (text) => {
   let newText = document.createElement('newText');
   newText.className = "newText";
   newText.innerText = text;
-  document.body.append(newText);
+  form.appendChild(newText);
 }
 
-let addInput = () => {
+let addInput = (text) => {
   let input = document.createElement('input');
   input.className = "input";
-  input.innerText = ""
-  document.body.append(input);
+  input.setAttribute('name', text);
+  form.appendChild(input);
 }
 
 let addButton = (text) => {
   let button = document.createElement('button');
   button.className = "button";
   button.innerText = text;
-  
+ 
   button.onclick = () => {
-    console.log("username: " + document.querySelectorAll("input")[0].value + 
-                " passward: " + document.querySelectorAll("input")[1].value);
+    const formData = new FormData(form);
+    console.log([...formData.entries()]);
   }
   document.body.append(button);
 }
-
   
 let addHeader = (text) => {
   let header = document.createElement('header');
@@ -43,15 +42,18 @@ let addHeader2 = (text) => {
   document.body.append(header2);
 }
 
-
 addHeader("Welcome to the website!");
 addPara();
 addHeader2("Would you like to log in?");
 addPara();
+
+let form = document.createElement("form");
+document.body.appendChild(form);
+
 addText("User name");
-addInput();
-addPara();
+addInput("Username");
+form.appendChild(document.createElement('p'));
 addText("Password ");
-addInput();
+addInput("Passward");
 addPara();
-addButton("Log in")
+addButton("Log in");
